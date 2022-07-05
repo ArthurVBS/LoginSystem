@@ -8,4 +8,6 @@ public interface IUserService {
 
   UserDTO getById(Long id);
 
+  UserDTO getByEmailAndPassword(String email, String password);
+
 }

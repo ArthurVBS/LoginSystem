@@ -26,6 +26,11 @@ public class UserController {
     return service.getById(id);
   }
 
+  @GetMapping(value = "/emailandpassword")
+  public UserDTO getByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
+    return service.getByEmailAndPassword(email, password);
+  }
+
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public ResponseEntity<String> create(@Valid @RequestBody UserDTO userDTO) {

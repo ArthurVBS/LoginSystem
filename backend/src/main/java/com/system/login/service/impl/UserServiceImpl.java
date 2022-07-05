@@ -34,4 +34,10 @@ public class UserServiceImpl implements IUserService {
     User result = repository.findById(id).get();
     return new UserDTO(result);
   }
+
+  @Override
+  public UserDTO getByEmailAndPassword(String email, String password) {
+    User result = repository.findByEmailAndPassword(email, password);
+    return new UserDTO(result);
+  }
 }
