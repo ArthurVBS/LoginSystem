@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { createSession } from '../services/api'
+import { loginSession } from '../services/api'
 import usePersistedState from '../utils/usePersistedState'
 
 interface IUserType {
@@ -41,7 +41,7 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
   const navigate = useNavigate()
 
   const login = async (email: string, password: string) => {
-    const response = await createSession(email, password)
+    const response = await loginSession(email, password)
 
     if (response != null) {
       const data = response.data

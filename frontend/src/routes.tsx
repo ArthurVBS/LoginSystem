@@ -4,6 +4,7 @@ import { useAuth } from './contexts/AuthContext'
 
 import Home from './pages/home'
 import Login from './pages/login'
+import SignUp from './pages/signup'
 
 type PrivateProps = {
   children: ReactNode
@@ -33,6 +34,7 @@ const AppRoutes: React.FC = () => {
         }
       />
       <Route path={PATH + '/login'} element={<Login />} />
+      <Route path={PATH + '/signup'} element={<SignUp />} />
       <Route />
     </Routes>
   )

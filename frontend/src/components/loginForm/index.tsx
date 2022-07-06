@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { Button, Field, FormContainer, Title } from './styles'
 
-const Form: React.FC = () => {
+const LoginForm: React.FC = () => {
+  const PATH = '/LoginSystem'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { user, login } = useAuth()
@@ -41,8 +43,9 @@ const Form: React.FC = () => {
         />
       </Field>
       <Button>Submit</Button>
+      <Link to={PATH + '/signup'}>Sign Up ^^</Link>
     </FormContainer>
   )
 }
 
-export default Form
+export default LoginForm

@@ -1,15 +1,15 @@
 import React from 'react'
-import LoginForm from '../../components/loginForm'
 import Message from '../../components/message'
+import SignUpForm from '../../components/signUpForm'
 import { useAuth } from '../../contexts/AuthContext'
 import { Container } from './styles'
 
-const Login: React.FC = () => {
+const SignUp: React.FC = () => {
   const { user } = useAuth()
 
   return (
-    <Container>{user.authenticated ? <Message /> : <LoginForm />}</Container>
+    <Container>{user.authenticated ? <Message /> : <SignUpForm />}</Container>
   )
 }
 
-export default Login
+export default SignUp
