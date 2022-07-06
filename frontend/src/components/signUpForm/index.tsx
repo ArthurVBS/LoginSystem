@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signUpSession } from '../../services/api'
+import { validateEmail, validateName } from '../../utils/validate'
 import { Button, Field, FormContainer, Title } from './styles'
 
 const SignUpForm: React.FC = () => {
@@ -11,6 +12,11 @@ const SignUpForm: React.FC = () => {
   const [password, setPassword] = useState('')
 
   const signUp = async (name: string, email: string, password: string) => {
+    if (!validateEmail(email) || !validateName(name)) {
+      console.log('Email - Name')
+      return
+    }
+
     const response = await signUpSession(name, email, password)
     console.log(response)
 
@@ -35,6 +41,8 @@ const SignUpForm: React.FC = () => {
           type="text"
           name="name"
           id="name"
+          minLength={2}
+          maxLength={150}
           onChange={e => setName(e.target.value)}
         />
       </Field>
@@ -46,6 +54,8 @@ const SignUpForm: React.FC = () => {
           type="email"
           name="email"
           id="email"
+          minLength={2}
+          maxLength={150}
           onChange={e => setEmail(e.target.value)}
         />
       </Field>
@@ -57,6 +67,8 @@ const SignUpForm: React.FC = () => {
           type="password"
           name="password"
           id="password"
+          minLength={2}
+          maxLength={32}
           onChange={e => setPassword(e.target.value)}
         />
       </Field>

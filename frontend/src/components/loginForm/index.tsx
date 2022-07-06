@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
+import { validateEmail } from '../../utils/validate'
 import { Button, Field, FormContainer, Title } from './styles'
 
 const LoginForm: React.FC = () => {
@@ -11,6 +12,11 @@ const LoginForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    if (!validateEmail(email)) {
+      console.log('Email')
+      return
+    }
 
     login(email, password)
   }
@@ -28,6 +34,8 @@ const LoginForm: React.FC = () => {
           type="email"
           name="email"
           id="email"
+          minLength={2}
+          maxLength={150}
           onChange={e => setEmail(e.target.value)}
         />
       </Field>
@@ -39,6 +47,8 @@ const LoginForm: React.FC = () => {
           type="password"
           name="password"
           id="password"
+          minLength={2}
+          maxLength={32}
           onChange={e => setPassword(e.target.value)}
         />
       </Field>
