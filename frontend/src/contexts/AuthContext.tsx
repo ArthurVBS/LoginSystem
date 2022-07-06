@@ -1,11 +1,13 @@
 import { createContext, ReactNode, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { createSession } from '../services/api'
 import usePersistedState from '../utils/usePersistedState'
 
 interface IUserType {
   authenticated: boolean
   id: string
   email: string
+  name: string
 }
 
 type AuthContextType = {
@@ -23,6 +25,7 @@ const initialValue = {
     authenticated: false,
     id: '',
     email: '',
+    name: '',
   },
   login: (email: string, password: string) => {},
   logout: () => {},
@@ -37,17 +40,24 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
   const PATH = '/LoginSystem'
   const navigate = useNavigate()
 
-  const login = (email: string, password: string) => {
-    console.log('Login', { email, password })
+  const login = async (email: string, password: string) => {
+    const response = await createSession(email, password)
 
-    if (password === '123') {
-      setUser({ authenticated: true, id: '123', email: email })
+    if (response != null) {
+      const data = response.data
+
+      setUser({
+        authenticated: true,
+        id: data.id,
+        email: data.email,
+        name: data.name,
+      })
       navigate(PATH + '/')
     }
   }
 
   const logout = () => {
-    setUser({ authenticated: false, id: '', email: '' })
+    setUser({ authenticated: false, id: '', email: '', name: '' })
     navigate(PATH + '/login')
   }
 

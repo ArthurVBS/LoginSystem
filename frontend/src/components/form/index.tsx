@@ -12,14 +12,16 @@ const Form: React.FC = () => {
 
     login(email, password)
   }
+
   return (
     <FormContainer onSubmit={e => handleSubmit(e)}>
       <Title>Welcome ^^</Title>
-      <p>Autenticado: {String(user.authenticated)}</p>
-      <p>Email: Qualquer - Senha: 123</p>
+      <p>Authenticated: {String(user.authenticated)}</p>
+      <p>tip: arthur@gmail.com & 123</p>
       <Field>
         <label htmlFor="email">Email</label>
         <input
+          required
           value={email}
           type="email"
           name="email"
@@ -30,6 +32,7 @@ const Form: React.FC = () => {
       <Field>
         <label htmlFor="password">Password</label>
         <input
+          required
           value={password}
           type="password"
           name="password"

@@ -11,7 +11,8 @@ const Home: React.FC = () => {
   return (
     <>
       <h1>Home Page</h1>
-      <p>Autenticado: {String(user.authenticated)}</p>
+      <p>Authenticated: {String(user.authenticated)}</p>
+      <p>Hi {user.name}</p>
       <button onClick={() => handleLogout()}>Logout</button>
     </>
   )
