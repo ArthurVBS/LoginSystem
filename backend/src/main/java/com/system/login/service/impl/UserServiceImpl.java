@@ -8,6 +8,8 @@ import com.system.login.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -37,7 +39,16 @@ public class UserServiceImpl implements IUserService {
 
   @Override
   public UserDTO getByEmailAndPassword(String email, String password) {
+    if(Objects.equals(email, "empty") || Objects.equals(password, "empty")){
+      throw new NotFoundException();
+    }
+
     User result = repository.findByEmailAndPassword(email, password);
+
+    if (result == null){
+      throw new NotFoundException();
+    }
+
     return new UserDTO(result);
   }
 }

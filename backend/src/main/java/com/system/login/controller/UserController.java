@@ -26,8 +26,10 @@ public class UserController {
     return service.getById(id);
   }
 
-  @GetMapping(value = "/emailandpassword")
-  public UserDTO getByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
+  @GetMapping(value = "")
+  public UserDTO getByEmailAndPassword(
+      @RequestParam(name = "email", defaultValue = "empty") String email,
+      @RequestParam(name = "password", defaultValue = "empty") String password) {
     return service.getByEmailAndPassword(email, password);
   }
 
@@ -58,7 +60,7 @@ public class UserController {
   public Map<String, String> handleNotFoundException() {
     Map<String, String> error = new HashMap<>();
 
-    error.put("id", "Not found");
+    error.put("User", "Not found");
 
     return error;
   }
