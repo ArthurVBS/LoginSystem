@@ -1,5 +1,6 @@
 package com.system.login.controller;
 
+import com.system.login.Exception.AlreadyExistsException;
 import com.system.login.Exception.NotFoundException;
 import com.system.login.dto.UserDTO;
 import com.system.login.service.impl.UserServiceImpl;
@@ -61,6 +62,16 @@ public class UserController {
     Map<String, String> error = new HashMap<>();
 
     error.put("User", "Not found");
+
+    return error;
+  }
+
+  @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+  @ExceptionHandler(AlreadyExistsException.class)
+  public Map<String, String> handleAlreadyExistsException() {
+    Map<String, String> error = new HashMap<>();
+
+    error.put("User", "Already exists");
 
     return error;
   }

@@ -1,5 +1,6 @@
 package com.system.login.service.impl;
 
+import com.system.login.Exception.AlreadyExistsException;
 import com.system.login.Exception.NotFoundException;
 import com.system.login.dto.UserDTO;
 import com.system.login.entity.User;
@@ -18,13 +19,17 @@ public class UserServiceImpl implements IUserService {
 
   @Override
   public UserDTO create(UserDTO userDTO) {
-    User user = new User();
-    user.setName(userDTO.getName());
-    user.setEmail(userDTO.getEmail());
-    user.setPassword(userDTO.getPassword());
-    User result = repository.save(user);
+    try {
+      User user = new User();
+      user.setName(userDTO.getName());
+      user.setEmail(userDTO.getEmail());
+      user.setPassword(userDTO.getPassword());
+      User result = repository.save(user);
 
-    return new UserDTO(result);
+      return new UserDTO(result);
+    } catch (Exception err) {
+      throw new AlreadyExistsException();
+    }
   }
 
   @Override
