@@ -2,19 +2,15 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { validateEmail } from '../../utils/validate'
+import Field from '../field'
 import {
   Button,
-  Field,
   Footer,
   FormContainer,
   Header,
-  Icon,
-  Input,
-  Label,
   Main,
   Text,
   Title,
-  WrapperInput,
 } from './styles'
 
 const LoginForm: React.FC = () => {
@@ -41,41 +37,25 @@ const LoginForm: React.FC = () => {
       </Header>
 
       <Main>
-        <Field>
-          <Label htmlFor="email">Email address</Label>
-          <WrapperInput>
-            <Icon className="fas fa-user"></Icon>
-            <Input
-              required
-              value={email}
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-              minLength={2}
-              maxLength={150}
-              onChange={e => setEmail(e.target.value)}
-            />
-          </WrapperInput>
-        </Field>
+        <Field
+          type="email"
+          state={email}
+          setState={setEmail}
+          label="Email Address"
+          icon="email"
+          placeholder="Email"
+          range={{ min: 2, max: 150 }}
+        />
 
-        <Field>
-          <Label htmlFor="password">Password</Label>
-          <WrapperInput>
-            <Icon className="fas fa-lock"></Icon>
-            <Input
-              required
-              value={password}
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              minLength={2}
-              maxLength={32}
-              onChange={e => setPassword(e.target.value)}
-            />
-          </WrapperInput>
-        </Field>
+        <Field
+          type="password"
+          state={password}
+          setState={setPassword}
+          label="Password"
+          icon="password"
+          placeholder="Password"
+          range={{ min: 2, max: 32 }}
+        />
 
         <Button>Log In</Button>
       </Main>
