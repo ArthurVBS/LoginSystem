@@ -2,7 +2,20 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { validateEmail } from '../../utils/validate'
-import { Button, Field, FormContainer, Title } from './styles'
+import {
+  Button,
+  Field,
+  Footer,
+  FormContainer,
+  Header,
+  Icon,
+  Input,
+  Label,
+  Main,
+  Text,
+  Title,
+  WrapperInput,
+} from './styles'
 
 const LoginForm: React.FC = () => {
   const PATH = '/LoginSystem'
@@ -23,37 +36,54 @@ const LoginForm: React.FC = () => {
 
   return (
     <FormContainer onSubmit={e => handleSubmit(e)}>
-      <Title>Welcome ^^</Title>
-      <p>Authenticated: {String(user.authenticated)}</p>
-      <p>tip: arthur@gmail.com & 123</p>
-      <Field>
-        <label htmlFor="email">Email</label>
-        <input
-          required
-          value={email}
-          type="email"
-          name="email"
-          id="email"
-          minLength={2}
-          maxLength={150}
-          onChange={e => setEmail(e.target.value)}
-        />
-      </Field>
-      <Field>
-        <label htmlFor="password">Password</label>
-        <input
-          required
-          value={password}
-          type="password"
-          name="password"
-          id="password"
-          minLength={2}
-          maxLength={32}
-          onChange={e => setPassword(e.target.value)}
-        />
-      </Field>
-      <Button>Submit</Button>
-      <Link to={PATH + '/signup'}>Sign Up ^^</Link>
+      <Header>
+        <Title>Log In to your account</Title>
+      </Header>
+
+      <Main>
+        <Field>
+          <Label htmlFor="email">Email address</Label>
+          <WrapperInput>
+            <Icon className="fas fa-user"></Icon>
+            <Input
+              required
+              value={email}
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              minLength={2}
+              maxLength={150}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </WrapperInput>
+        </Field>
+
+        <Field>
+          <Label htmlFor="password">Password</Label>
+          <WrapperInput>
+            <Icon className="fas fa-lock"></Icon>
+            <Input
+              required
+              value={password}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              minLength={2}
+              maxLength={32}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </WrapperInput>
+        </Field>
+
+        <Button>Log In</Button>
+      </Main>
+
+      <Footer>
+        <Text>Are you new?</Text>
+        <Link to={PATH + '/signup'}>Sign Up</Link>
+      </Footer>
     </FormContainer>
   )
 }

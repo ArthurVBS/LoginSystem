@@ -6,7 +6,6 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 16px;
-  font-family: 'Lucida Sans', Verdana, sans-serif;
   max-width: 528px;
   width: 100%;
   margin: 0 auto;

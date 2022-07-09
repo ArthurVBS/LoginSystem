@@ -5,7 +5,6 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Lucida Sans', Verdana, sans-serif;
   max-width: 528px;
   width: 100%;
   margin: 0 auto;
