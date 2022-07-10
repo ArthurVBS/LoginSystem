@@ -1,2 +1,0 @@
-# LoginSystem
-🔐 User authentication system.
