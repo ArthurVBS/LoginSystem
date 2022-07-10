@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { BASE_URL } from '../utils/env_sample'
 
 export const api = axios.create({
-  baseURL: 'http://localhost:8090',
+  baseURL: BASE_URL,
 })
 
 export const loginSession = async (email: string, password: string) => {
