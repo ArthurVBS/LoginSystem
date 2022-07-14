@@ -32,12 +32,14 @@ const Field: React.FC<Props> = ({
       return <Icon className="fas fa-user"></Icon>
     } else if (icon == 'password') {
       return <Icon className="fas fa-lock"></Icon>
+    } else if (icon == 'name') {
+      return <Icon className="fas fa-signature"></Icon>
     }
   }
 
   return (
     <Container>
-      <Label htmlFor={state}>{label}</Label>
+      <Label>{label}</Label>
       <WrapperInput>
         {renderIcon()}
 
@@ -45,8 +47,6 @@ const Field: React.FC<Props> = ({
           required
           value={state}
           type={type}
-          name={state}
-          id={state}
           placeholder={placeholder}
           minLength={range?.min}
           maxLength={range?.max}

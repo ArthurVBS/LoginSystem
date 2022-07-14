@@ -17,7 +17,7 @@ const LoginForm: React.FC = () => {
   const PATH = '/LoginSystem'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { user, login } = useAuth()
+  const { login } = useAuth()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

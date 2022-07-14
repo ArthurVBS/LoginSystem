@@ -2,7 +2,16 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signUpSession } from '../../services/api'
 import { validateEmail, validateName } from '../../utils/validate'
-import { Button, Field, FormContainer, Title } from './styles'
+import Field from '../field'
+import {
+  Button,
+  Footer,
+  FormContainer,
+  Header,
+  Main,
+  Text,
+  Title,
+} from './styles'
 
 const SignUpForm: React.FC = () => {
   const navigate = useNavigate()
@@ -32,48 +41,48 @@ const SignUpForm: React.FC = () => {
 
   return (
     <FormContainer onSubmit={e => handleSubmit(e)}>
-      <Title>Sign Up</Title>
-      <Field>
-        <label htmlFor="name">Name</label>
-        <input
-          required
-          value={name}
+      <Header>
+        <Title>Sign up and Get in</Title>
+      </Header>
+
+      <Main>
+        <Field
           type="text"
-          name="name"
-          id="name"
-          minLength={2}
-          maxLength={150}
-          onChange={e => setName(e.target.value)}
+          state={name}
+          setState={setName}
+          label="Name"
+          icon="name"
+          placeholder="Name"
+          range={{ min: 2, max: 150 }}
         />
-      </Field>
-      <Field>
-        <label htmlFor="email">Email</label>
-        <input
-          required
-          value={email}
+
+        <Field
           type="email"
-          name="email"
-          id="email"
-          minLength={2}
-          maxLength={150}
-          onChange={e => setEmail(e.target.value)}
+          state={email}
+          setState={setEmail}
+          label="Email Address"
+          icon="email"
+          placeholder="Email"
+          range={{ min: 2, max: 150 }}
         />
-      </Field>
-      <Field>
-        <label htmlFor="password">Password</label>
-        <input
-          required
-          value={password}
+
+        <Field
           type="password"
-          name="password"
-          id="password"
-          minLength={2}
-          maxLength={32}
-          onChange={e => setPassword(e.target.value)}
+          state={password}
+          setState={setPassword}
+          label="Password"
+          icon="password"
+          placeholder="Password"
+          range={{ min: 2, max: 32 }}
         />
-      </Field>
-      <Button>Submit</Button>
-      <Link to={PATH + '/login'}>Login ^^</Link>
+
+        <Button>Sign Up</Button>
+      </Main>
+
+      <Footer>
+        <Text>Aren't you new here?</Text>
+        <Link to={PATH + '/login'}>Login </Link>
+      </Footer>
     </FormContainer>
   )
 }
