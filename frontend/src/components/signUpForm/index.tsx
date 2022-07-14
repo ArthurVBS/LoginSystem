@@ -40,7 +40,7 @@ const SignUpForm: React.FC = () => {
   }
 
   return (
-    <FormContainer onSubmit={e => handleSubmit(e)}>
+    <FormContainer onSubmit={e => handleSubmit(e)} data-aos="fade-right">
       <Header>
         <Title>Sign up and Get in</Title>
       </Header>
