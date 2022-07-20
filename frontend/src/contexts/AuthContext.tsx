@@ -10,9 +10,16 @@ interface IUserType {
   name: string
 }
 
+type IErrPopUp = React.Dispatch<
+  React.SetStateAction<{
+    show: boolean
+    message: string
+  }>
+>
+
 type AuthContextType = {
   user: IUserType
-  login: (email: string, password: string) => void
+  login: (email: string, password: string, setErrPopUp: IErrPopUp) => void
   logout: () => void
 }
 
@@ -27,7 +34,7 @@ const initialValue = {
     email: '',
     name: '',
   },
-  login: (email: string, password: string) => {},
+  login: (email: string, password: string, setErrPopUp: IErrPopUp) => {},
   logout: () => {},
 }
 
@@ -40,10 +47,14 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
   const PATH = '/LoginSystem'
   const navigate = useNavigate()
 
-  const login = async (email: string, password: string) => {
+  const login = async (
+    email: string,
+    password: string,
+    setErrPopUp: IErrPopUp,
+  ) => {
     const response = await loginSession(email, password)
 
-    if (response != null) {
+    if (response.status == 200) {
       const data = response.data
 
       setUser({
@@ -53,6 +64,8 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
         name: data.name,
       })
       navigate(PATH + '/')
+    } else {
+      setErrPopUp({ show: true, message: 'User Not Found' })
     }
   }
 

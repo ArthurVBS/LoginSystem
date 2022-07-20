@@ -13,7 +13,16 @@ import {
   Title,
 } from './styles'
 
-const SignUpForm: React.FC = () => {
+type Props = {
+  setErrPopUp: React.Dispatch<
+    React.SetStateAction<{
+      show: boolean
+      message: string
+    }>
+  >
+}
+
+const SignUpForm: React.FC<Props> = ({ setErrPopUp }) => {
   const navigate = useNavigate()
   const PATH = '/LoginSystem'
   const [name, setName] = useState('')
@@ -22,15 +31,16 @@ const SignUpForm: React.FC = () => {
 
   const signUp = async (name: string, email: string, password: string) => {
     if (!validateEmail(email) || !validateName(name)) {
-      console.log('Email - Name')
+      console.log('Invalid Email or Name')
       return
     }
 
     const response = await signUpSession(name, email, password)
-    console.log(response)
 
     if (response?.status == 200) {
       navigate(PATH + '/login')
+    } else {
+      setErrPopUp({ show: true, message: 'User Already Exists' })
     }
   }
 

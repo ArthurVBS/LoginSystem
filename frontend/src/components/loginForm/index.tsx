@@ -13,7 +13,16 @@ import {
   Title,
 } from './styles'
 
-const LoginForm: React.FC = () => {
+type Props = {
+  setErrPopUp: React.Dispatch<
+    React.SetStateAction<{
+      show: boolean
+      message: string
+    }>
+  >
+}
+
+const LoginForm: React.FC<Props> = ({ setErrPopUp }) => {
   const PATH = '/LoginSystem'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -23,11 +32,11 @@ const LoginForm: React.FC = () => {
     e.preventDefault()
 
     if (!validateEmail(email)) {
-      console.log('Email')
+      console.log('Invalid Email')
       return
     }
 
-    login(email, password)
+    login(email, password, setErrPopUp)
   }
 
   return (

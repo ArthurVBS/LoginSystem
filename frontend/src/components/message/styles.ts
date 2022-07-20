@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: #0000001f;
+  background-color: ${props => props.theme.background};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,12 +24,14 @@ export const WrapperLink = styled.div`
   align-items: center;
 
   a {
-    background-color: #0000001f;
-    color: black;
-    font-size: 0.8em;
+    background-color: ${props => props.theme.primary};
+    color: ${props => props.theme.background};
+    font-size: 0.9em;
+    font-weight: 700;
+    letter-spacing: 1px;
     text-decoration: none;
     border-radius: 8px;
-    padding: 4px;
+    padding: 4px 12px;
     transition: background-color 0.4s, color 0.4s;
 
     &:hover {

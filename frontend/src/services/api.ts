@@ -7,7 +7,7 @@ export const api = axios.create({
 
 export const loginSession = async (email: string, password: string) => {
   return api.get(`/user?email=${email}&password=${password}`).catch(e => {
-    return null
+    return e.response
   })
 }
 
@@ -17,6 +17,6 @@ export const signUpSession = async (
   password: string,
 ) => {
   return api.post('/user', { name, email, password }).catch(e => {
-    return null
+    return e.response
   })
 }

@@ -9,7 +9,7 @@ const Message: React.FC = () => {
     <Container>
       <Text>Go to Home page, because you're already authenticated</Text>
       <WrapperLink>
-        <Link to={PATH + '/'}>home ^^</Link>
+        <Link to={PATH + '/'}>Home </Link>
       </WrapperLink>
     </Container>
   )
