@@ -37,11 +37,13 @@ export default createGlobalStyle`
 
   html{
     scroll-behavior: smooth;
+    min-height: 100vh;
   }
 
   body{
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
+    min-height: 100vh;
     font-family: 'Quicksand', sans-serif;
   }
 `

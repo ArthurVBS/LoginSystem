@@ -1,19 +1,22 @@
 import React from 'react'
 import { useAuth } from '../../contexts/AuthContext'
+import { Container } from './styles'
+import Header from '../../components/header'
+import Footer from '../../components/footer'
 
 const Home: React.FC = () => {
-  const { user, logout } = useAuth()
-
-  const handleLogout = () => {
-    logout()
-  }
+  const { user } = useAuth()
 
   return (
     <>
-      <h1>Home Page</h1>
-      <p>Authenticated: {String(user.authenticated)}</p>
-      <p>Hi {user.name}</p>
-      <button onClick={() => handleLogout()}>Logout</button>
+      <Header />
+
+      <Container>
+        <p>Authenticated: {String(user.authenticated)}</p>
+        <p>Hi {user.name}</p>
+      </Container>
+
+      <Footer />
     </>
   )
 }
