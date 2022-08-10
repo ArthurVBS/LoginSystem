@@ -13,7 +13,7 @@
   &nbsp;
   <img src="https://img.shields.io/badge/React-000?style=social&logo=react&logoColor=469BD2">
   &nbsp;
-  <img src="https://img.shields.io/badge/Java-000?style=social&logo=java&logoColor=469BD2">
+  <img src="https://img.shields.io/badge/Java-000?style=social&logo=openjdk&logoColor=469BD2">
   &nbsp;
   <img src="https://img.shields.io/badge/Spring-000?style=social&logo=spring&logoColor=469BD2">
   &nbsp;
@@ -31,7 +31,7 @@
 
 ## 💻 Situação do projeto:
 
-- 🚧 Projeto em andamento... 🛠
+- Projeto finalizado ✔️
 
 ## 🛠 Tecnologias:
 
@@ -48,7 +48,8 @@
 
 ## 📝 Features:
 
-- [X] Permitir que o usuário faça login e cadastro.
+- [X] Permitir que usuários façam login.
+- [X] Permitir que novos usuários cadastrem-se.
 
 ## ⚙️ Pré-requisitos:
 
