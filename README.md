@@ -65,10 +65,6 @@
 
 ## 🚀 How to run the application?
 
-- 🌎 Go to the [application website](https://arthurvbs.github.io/LoginSystem/).
-
-  `or`
-
 - 💻 Download the ZIP or Clone the application on your machine;
 - 🎨 Frontend
   - Open CMD and navigate to 'frontend' folder: `cd frontend`,
